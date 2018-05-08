@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.moodmusicapp.MainActivity">
+
+    <TextView
+        android:id="@+id/lucky"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Feeling Lucky"/>
+
+    <TextView
+        android:id="@+id/energize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Energize Me"/>
+
+    <TextView
+        android:id="@+id/love"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Feeling Loved"/>
+
+    <TextView
+        android:id="@+id/rainy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Rainy Feelings"/>
+</LinearLayout>
