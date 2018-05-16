@@ -1,21 +1,39 @@
 package com.example.android.moodmusicapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FeelingLuckyActivity extends AppCompatActivity {
+public class FeelingLuckyActivity extends AppCompatActivity implements ListView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_list);
 
+        createSongList();
+    }
+    public void createSongList() {
         // Create a list of songs
         ArrayList<Playlist> songs = new ArrayList<Playlist>();
-        songs.add(new Playlist("Where are you going?", "minto wuksus"));
+        songs.add(new Playlist("I Feel Lucky", "Mary Chapin Carpenter"));
+        songs.add(new Playlist("Lucky", "Jason Mraz"));
+        songs.add(new Playlist("Some Guys Have All The Luck", "Rod Stewart"));
+        songs.add(new Playlist("Lucky Star", "Madonna"));
+        songs.add(new Playlist("Green Lights", "Aloe Blacc"));
+        songs.add(new Playlist("Ironic", "Alanis Morissette"));
+        songs.add(new Playlist("Get Lucky", "Daft Punk feat. Pharrell Williams"));
+        songs.add(new Playlist("Second Chance", "Shinedown"));
+        songs.add(new Playlist("With A Little Luck", "Paul McCartney and Wings"));
+        songs.add(new Playlist("Good Run of Bad Luck", "Clint Black"));
+
 
 
         // Create an {@link PlaylistAdapter}, whose data source is a list of {@link Song}s. The
@@ -30,5 +48,29 @@ public class FeelingLuckyActivity extends AppCompatActivity {
         // Make the {@link ListView} use the {@link PlaylistAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Playlist} in the list.
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(this);
+
+    }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        final Context context = this;
+        String intentExtra = "";
+
+        // Find the TextView in the list_item.xml layout with the ID song_name.
+        TextView songNameTextView = (TextView) view.findViewById(R.id.song_name);
+        String song = songNameTextView.getText().toString();
+
+        // Find the TextView in the list_item.xml layout with the ID artist_name.
+        TextView artistNameTextView = (TextView) view.findViewById(R.id.artist_name);
+        String artist = artistNameTextView.getText().toString();
+
+        intentExtra = song + "|" + artist;
+        Intent intent = new Intent(context, PlayActivity.class);
+        intent.putExtra("songs", intentExtra);
+        startActivity(intent);
+
+        ArrayList<Playlist> songs = new ArrayList<Playlist>();
+        intent.putExtra("songs", songs);
     }
 }

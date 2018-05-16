@@ -4,11 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/app_background"
     tools:context="com.example.android.moodmusicapp.MainActivity">
 
-    <TextView
-        android:id="@+id/mood"
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="What's your mood today?"/>
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/dim_20">
+
+        <LinearLayout
+            android:id="@+id/main_layout"
+            android:background="@color/purple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/notes"
+                android:contentDescription="@string/notes_image"/>
+
+            <TextView
+                android:id="@+id/mood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dim_24"
+                android:padding="@dimen/dim_10"
+                android:layout_marginTop="@dimen/dim_45"
+                android:layout_marginBottom="@dimen/dim_40"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:text="@string/question_main_activity"/>
+
+            <ImageView
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dim_60"
+                android:src="@drawable/start_button"
+                android:contentDescription="@string/start_button"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

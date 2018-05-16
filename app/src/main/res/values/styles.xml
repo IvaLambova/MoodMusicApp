@@ -8,4 +8,68 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Main Activity Card View style -->
+    <style name="MainCardView" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_margin">@dimen/dim_20</item>
+        <item name="cardBackgroundColor">@color/purple</item>
+        <item name="cardCornerRadius">@dimen/dim_16</item>
+        <item name="cardElevation">@dimen/dim_16</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <!-- Main Activity Child Linear Layout style -->
+    <style name="ChildLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/purple</item>
+    </style>
+
+    <!-- Main Activity Image View style for notes image -->
+    <style name="NotesImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:src">@drawable/notes</item>
+        <item name="android:contentDescription">@string/notes_image</item>
+    </style>
+
+    <!-- Main Activity Text View style -->
+    <style name="MainTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/dim_24</item>
+        <item name="android:padding">@dimen/dim_10</item>
+        <item name="android:layout_marginTop">@dimen/dim_45</item>
+        <item name="android:layout_marginBottom">@dimen/dim_40</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:text">@string/question_main_activity</item>
+    </style>
+
+    <!-- Main Activity Image View style for start arrow button -->
+    <style name="ArrowImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/dim_60</item>
+        <item name="android:src">@drawable/start_button</item>
+        <item name="android:contentDescription">@string/start_button</item>
+    </style>
+
+    <!-- List Item Activity Image View style for start arrow button -->
+    <style name="SongNameText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/dim_60</item>
+        <item name="android:src">@drawable/start_button</item>
+        <item name="android:contentDescription">@string/start_button</item>
+    </style>
+
+
 </resources>

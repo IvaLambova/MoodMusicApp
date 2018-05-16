@@ -1,21 +1,40 @@
 package com.example.android.moodmusicapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class RainyFeelingsActivity extends AppCompatActivity {
+
+public class RainyFeelingsActivity extends AppCompatActivity implements ListView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_list);
 
+        createSongList();
+    }
+
+    public void createSongList() {
         // Create a list of songs
         ArrayList<Playlist> songs = new ArrayList<Playlist>();
-        songs.add(new Playlist("Where are you going?", "minto wuksus"));
+        songs.add(new Playlist("Riders On The Storm", "The Doors"));
+        songs.add(new Playlist("Teardrop", "Massive Attack"));
+        songs.add(new Playlist("Holocene", "Bon Iver"));
+        songs.add(new Playlist("This Dress Looks Nice On You", "Sufjan Stevens"));
+        songs.add(new Playlist("Decks Dark", "Radiohead"));
+        songs.add(new Playlist("Overgrown", "James Blake"));
+        songs.add(new Playlist("Roads", "Portishead"));
+        songs.add(new Playlist("Open", "Rhye"));
+        songs.add(new Playlist("Chanel", "Frank Ocean"));
+        songs.add(new Playlist("The Rain Song", "Led Zeppelin"));
 
 
         // Create an {@link PlaylistAdapter}, whose data source is a list of {@link Song}s. The
@@ -30,5 +49,25 @@ public class RainyFeelingsActivity extends AppCompatActivity {
         // Make the {@link ListView} use the {@link PlaylistAdapter} we created above, so that the
         // {@link ListView} will display list items for each {@link Playlist} in the list.
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(this);
+    }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        final Context context = this;
+        String intentExtra = "";
+
+        // Find the TextView in the list_item.xml layout with the ID song_name.
+        TextView songNameTextView = (TextView) view.findViewById(R.id.song_name);
+        String song = songNameTextView.getText().toString();
+
+        // Find the TextView in the list_item.xml layout with the ID artist_name.
+        TextView artistNameTextView = (TextView) view.findViewById(R.id.artist_name);
+        String artist = artistNameTextView.getText().toString();
+
+        intentExtra = song + "|" + artist + "|" + song;
+        Intent intent = new Intent(context, PlayActivity.class);
+        intent.putExtra("message", intentExtra);
+        startActivity(intent);
     }
 }

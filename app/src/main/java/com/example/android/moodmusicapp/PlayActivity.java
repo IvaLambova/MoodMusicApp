@@ -24,15 +24,28 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
     private TextView mArtistName;
     private ImageView mAlbumCover;
 
+
     // Various identifiers
     private String mSong;
     private String mArtist;
-    private String mAlbum;
+    private String mCover;
+    private String mIntentMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_activity);
+
+        String [] intentMsgArray = new String[2];
+
+        Bundle bundle = getIntent().getExtras();
+        mIntentMessage = bundle.getString("message");
+
+        // Splits intent message received into song, singer, and song category
+        intentMsgArray = mIntentMessage.split("\\|");
+        mSong = intentMsgArray[0];
+        mArtist = intentMsgArray[1];
 
         // Initialize UI Components
         mSongName = (TextView) findViewById(R.id.song_name);
@@ -42,22 +55,28 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
         mPlaySong = (ImageButton) findViewById(R.id.play_button);
         mPauseSong = (ImageButton) findViewById(R.id.pause_button);
 
+
         // Set OnClickListeners on clickable items
         mPlaySong.setOnClickListener(this);
         mPauseSong.setOnClickListener(this);
         mSeekBar.setOnSeekBarChangeListener(this);
         mSeekBar.setEnabled(false);
+
+        // Display Media Details and Image
+        displayMediaDetails();
+
     }
+
 
         /**
          * This method displays song details - song name, artist name & album cover
          */
-        public void displayMediaDetails() {
+        public void displayMediaDetails(){
             mSongName.setText(mSong);
             mArtistName.setText(mArtist);
 
-            int resId = getResources().getIdentifier(mAlbum, "drawable", getPackageName());
-            mAlbumCover.setImageResource(resId);
+            int albumCover = getResources().getIdentifier(mCover, "drawable", getPackageName());
+            mAlbumCover.setImageResource(albumCover);
         }
 
     /**
@@ -112,12 +131,12 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
                     mMediaPlayer.seekTo(progress);
                 }
             } else if (mMediaPlayer == null) {
-                Toast.makeText(getApplicationContext(), "Media is not running",
+                Toast.makeText(getApplicationContext(), "Press Play",
                         Toast.LENGTH_SHORT).show();
                 seekBar.setProgress(0);
             }
         } catch (Exception e) {
-            Log.e("MediaActivity", "SeekBar not responding" + e);
+            Log.e("PlayActivity", "SeekBar is not responding" + e);
             seekBar.setEnabled(false);
         }
     }
@@ -130,7 +149,7 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        // TODO Auto-generated method stub
+        // TODO
 
     }
         }

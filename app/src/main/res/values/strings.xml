@@ -1,3 +1,32 @@
 <resources>
+    <!-- App name -->
     <string name="app_name">Mood Music App</string>
+
+    <!-- A description of the question in activity_main.xml -->
+    <string name="question_main_activity">What is your mood today?</string>
+
+    <!-- A description of the notes image in activity_main.xml -->
+    <string name="notes_image">Notes images</string>
+
+    <!-- A description of the start button in activity_main.xml -->
+    <string name="start_button">Start button</string>
+
+    <!-- A preview text for a song listed item -->
+    <string name="tools_text_song">I Feel Lucky</string>
+
+    <!-- A description of for an artist listed item -->
+    <string name="tools_text_artist">Mary Chapin Carpenter</string>
+
+    <!-- Text for the "Feeling Lucky" mood in mood_activity.xml -->
+    <string name="feeling_lucky">Feeling Lucky</string>
+
+    <!-- Text for the "Energize Me" mood in mood_activity.xml -->
+    <string name="energize_me">Energize Me</string>
+
+    <!-- Text for the "Feeling Loved" mood in mood_activity.xml -->
+    <string name="feeling_loved">Feeling Loved</string>
+
+    <!-- Text for the "Feeling Loved" mood in mood_activity.xml -->
+    <string name="rainy_feelings">Rainy Feelings</string>
+
 </resources>

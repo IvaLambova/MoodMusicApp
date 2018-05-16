@@ -5,19 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/dim_16"
+    android:background="@drawable/customborder">
 
     <TextView
         android:id="@+id/song_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="lutti" />
+        tools:text="@string/tools_text_song"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/artist_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="one" />
+        tools:text="@string/tools_text_artist"
+        android:textColor="@color/white"/>
 
 </LinearLayout>
 
