@@ -15,20 +15,16 @@ import android.widget.Toast;
 public class PlayActivity extends AppCompatActivity implements Runnable,
         View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
-    // UI Components
     private SeekBar mSeekBar;
     private ImageButton mPlaySong;
     private ImageButton mPauseSong;
     private MediaPlayer mMediaPlayer;
-    private TextView mSongName;
-    private TextView mArtistName;
-    private ImageView mAlbumCover;
+    private TextView mTextSong;
+    private TextView mTextArtist;
 
-
-    // Various identifiers
-    private String mSong;
-    private String mArtist;
-    private String mCover;
+    private String mSongName;
+    private String mArtistName;
+    private int mAlbumCover;
     private String mIntentMessage;
 
     @Override
@@ -37,20 +33,19 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_activity);
 
-        String [] intentMsgArray = new String[2];
+       String [] intentMsgArray = new String[2];
 
         Bundle bundle = getIntent().getExtras();
-        mIntentMessage = bundle.getString("message");
+        mIntentMessage = bundle.getString("");
 
         // Splits intent message received into song, singer, and song category
         intentMsgArray = mIntentMessage.split("\\|");
-        mSong = intentMsgArray[0];
-        mArtist = intentMsgArray[1];
+        mSongName = intentMsgArray[0];
+        mArtistName = intentMsgArray[1];
 
         // Initialize UI Components
-        mSongName = (TextView) findViewById(R.id.song_name);
-        mArtistName = (TextView) findViewById(R.id.artist_name);
-        mAlbumCover = (ImageView) findViewById(R.id.album_cover);
+        mTextSong = (TextView) findViewById(R.id.song_name);
+        mTextArtist = (TextView) findViewById(R.id.artist_name);
         mSeekBar = (SeekBar) findViewById(R.id.seekbar);
         mPlaySong = (ImageButton) findViewById(R.id.play_button);
         mPauseSong = (ImageButton) findViewById(R.id.pause_button);
@@ -72,11 +67,8 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
          * This method displays song details - song name, artist name & album cover
          */
         public void displayMediaDetails(){
-            mSongName.setText(mSong);
-            mArtistName.setText(mArtist);
-
-            int albumCover = getResources().getIdentifier(mCover, "drawable", getPackageName());
-            mAlbumCover.setImageResource(albumCover);
+            mTextSong.setText(mSongName);
+            mTextArtist.setText(mArtistName);
         }
 
     /**
@@ -105,7 +97,7 @@ public class PlayActivity extends AppCompatActivity implements Runnable,
     public void onClick(View v) {
         if (v.equals(mPlaySong)) {
             if (mMediaPlayer == null) {
-                int resId = getResources().getIdentifier(mSong, "raw", getPackageName());
+                int resId = getResources().getIdentifier(mSongName, "raw", getPackageName());
                 mMediaPlayer = MediaPlayer.create(PlayActivity.this, resId);
                 mSeekBar.setEnabled(true);
             }

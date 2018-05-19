@@ -29,4 +29,10 @@
     <!-- Text for the "Feeling Loved" mood in mood_activity.xml -->
     <string name="rainy_feelings">Rainy Feelings</string>
 
+    <!-- Playlist Labels -->
+    <string name="label_lucky">Feeling Lucky</string>
+    <string name="label_energize">Energize Me</string>
+    <string name="label_loved">Feeling Loved</string>
+    <string name="label_rainy">Rainy Feelings</string>
+
 </resources>

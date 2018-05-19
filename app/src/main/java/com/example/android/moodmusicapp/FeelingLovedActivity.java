@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,16 +25,16 @@ public class FeelingLovedActivity extends AppCompatActivity implements ListView.
     public void createSongList() {
         // Create a list of songs
         ArrayList<Playlist> songs = new ArrayList<Playlist>();
-        songs.add(new Playlist("I Don't Want to Miss a Thing ", "Aerosmith"));
-        songs.add(new Playlist("God Only Knows", "The Beach Boys"));
-        songs.add(new Playlist("I Just Can't Stop Loving You", "Michael Jackson"));
-        songs.add(new Playlist("Still Loving You", "Scorpions"));
-        songs.add(new Playlist("Layla", "Derek & the Dominos"));
-        songs.add(new Playlist("Heaven", "Bryan Adams"));
-        songs.add(new Playlist("My Immortal", "Evanescence"));
-        songs.add(new Playlist("Endless Love", "Diana Ross & Lionel Richie"));
-        songs.add(new Playlist("Something", "The Beatles"));
-        songs.add(new Playlist("Maybe I'm Amazed", "Paul McCartney"));
+        songs.add(new Playlist("I Don't Want to Miss a Thing ", "Aerosmith", R.drawable.cover_aerosmith));
+        songs.add(new Playlist("God Only Knows", "The Beach Boys", R.drawable.cover_the_beach_boys));
+        songs.add(new Playlist("I Just Can't Stop Loving You", "Michael Jackson", R.drawable.cover_michael_jackson));
+        songs.add(new Playlist("Still Loving You", "Scorpions", R.drawable.cover_scorpions));
+        songs.add(new Playlist("Layla", "Derek & the Dominos", R.drawable.cover_derek_and_the_dominos));
+        songs.add(new Playlist("Heaven", "Bryan Adams", R.drawable.cover_bryan_adams));
+        songs.add(new Playlist("My Immortal", "Evanescence", R.drawable.cover_evanescence));
+        songs.add(new Playlist("Endless Love", "Diana Ross & Lionel Richie", R.drawable.cover_diana_ross));
+        songs.add(new Playlist("Something", "The Beatles", R.drawable.cover_the_beatles));
+        songs.add(new Playlist("Maybe I'm Amazed", "Paul McCartney", R.drawable.cover_paul_mccartney_and_wings));
 
 
         // Create an {@link PlaylistAdapter}, whose data source is a list of {@link Song}s. The
@@ -64,7 +65,11 @@ public class FeelingLovedActivity extends AppCompatActivity implements ListView.
         TextView artistNameTextView = (TextView) view.findViewById(R.id.artist_name);
         String artist = artistNameTextView.getText().toString();
 
-        intentExtra = song + "|" + artist + "|" + song;
+        // Find the ImageView in the list_item.xml layout with the ID album_cover.
+        ImageView albumCoverImageView = (ImageView) view.findViewById(R.id.album_cover);
+        int cover = albumCoverImageView.getImageAlpha();
+
+        intentExtra = cover + "|" + song + "|" + artist;
         Intent intent = new Intent(context, PlayActivity.class);
         intent.putExtra("message", intentExtra);
         startActivity(intent);

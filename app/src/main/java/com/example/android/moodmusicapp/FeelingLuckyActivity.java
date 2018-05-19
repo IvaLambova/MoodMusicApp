@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,16 +24,16 @@ public class FeelingLuckyActivity extends AppCompatActivity implements ListView.
     public void createSongList() {
         // Create a list of songs
         ArrayList<Playlist> songs = new ArrayList<Playlist>();
-        songs.add(new Playlist("I Feel Lucky", "Mary Chapin Carpenter"));
-        songs.add(new Playlist("Lucky", "Jason Mraz"));
-        songs.add(new Playlist("Some Guys Have All The Luck", "Rod Stewart"));
-        songs.add(new Playlist("Lucky Star", "Madonna"));
-        songs.add(new Playlist("Green Lights", "Aloe Blacc"));
-        songs.add(new Playlist("Ironic", "Alanis Morissette"));
-        songs.add(new Playlist("Get Lucky", "Daft Punk feat. Pharrell Williams"));
-        songs.add(new Playlist("Second Chance", "Shinedown"));
-        songs.add(new Playlist("With A Little Luck", "Paul McCartney and Wings"));
-        songs.add(new Playlist("Good Run of Bad Luck", "Clint Black"));
+        songs.add(new Playlist("I Feel Lucky", "Mary Chapin Carpenter", R.drawable.cover_mary_chapin_carpenter));
+        songs.add(new Playlist("Lucky", "Jason Mraz", R.drawable.cover_jason_mraz));
+        songs.add(new Playlist("Some Guys Have All The Luck", "Rod Stewart", R.drawable.cover_rod_steward));
+        songs.add(new Playlist("Lucky Star", "Madonna", R.drawable.cover_madonna));
+        songs.add(new Playlist("Green Lights", "Aloe Blacc", R.drawable.cover_alow_blacc));
+        songs.add(new Playlist("Ironic", "Alanis Morissette", R.drawable.cover_alow_blacc));
+        songs.add(new Playlist("Get Lucky", "Daft Punk feat. Pharrell Williams", R.drawable.cover_pharell_williams));
+        songs.add(new Playlist("Second Chance", "Shinedown", R.drawable.cover_shinedown));
+        songs.add(new Playlist("With A Little Luck", "Paul McCartney and Wings", R.drawable.cover_paul_mccartney_and_wings));
+        songs.add(new Playlist("Good Run of Bad Luck", "Clint Black", R.drawable.cover_clint_black));
 
 
 
@@ -65,12 +66,13 @@ public class FeelingLuckyActivity extends AppCompatActivity implements ListView.
         TextView artistNameTextView = (TextView) view.findViewById(R.id.artist_name);
         String artist = artistNameTextView.getText().toString();
 
-        intentExtra = song + "|" + artist;
+        // Find the ImageView in the list_item.xml layout with the ID album_cover.
+        ImageView albumCoverImageView = (ImageView) view.findViewById(R.id.album_cover);
+        int cover = albumCoverImageView.getImageAlpha();
+
+        intentExtra = cover + "|" + song + "|" + artist;
         Intent intent = new Intent(context, PlayActivity.class);
         intent.putExtra("songs", intentExtra);
         startActivity(intent);
-
-        ArrayList<Playlist> songs = new ArrayList<Playlist>();
-        intent.putExtra("songs", songs);
     }
 }

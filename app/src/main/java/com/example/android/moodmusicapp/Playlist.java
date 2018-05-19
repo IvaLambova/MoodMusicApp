@@ -14,15 +14,20 @@ public class Playlist {
     /** Artist name*/
     private String mArtistName;
 
+    /** Artist name*/
+    private int mAlbumCoverId;
+
     /**
      * Create a new Song object.
      * @param songName is the name of the song in the playlist
      * @param artistName is the name of the artist in the playlist
+     * @param albumCoverId is the id of the album cover
      */
-    public Playlist(String songName, String artistName) {
+    public Playlist(String songName, String artistName, int albumCoverId) {
 
         mSongName = songName;
         mArtistName = artistName;
+        mAlbumCoverId = albumCoverId;
     }
 
     /**
@@ -39,4 +44,10 @@ public class Playlist {
         return mArtistName;
     }
 
+    /**
+     * Get the artist name.
+     */
+    public int getAlbumCoverId() {
+        return mAlbumCoverId;
+    }
 }
